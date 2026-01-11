@@ -1,191 +1,92 @@
-<!DOCTYPE html>
-<html lang="es" class="dark scroll-smooth">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frases de Luz Interior</title>
-  
-  <!-- Tipografías -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Dancing+Script:wght@400;600;700&family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Configuración rápida -->
-  <script>
-    tailwind.config = {
-      theme: { extend: { colors: { neon: { blue: '#00f3ff' } } } }
-    }
-  </script>
-  
-  <!-- ESTILO DEL FONDO NEÓN ANIMADO -->
-  <style>
-    /* Fondo principal con animación neón */
-    .bg-neon-animated {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #050517;
-      z-index: -2;
-      overflow: hidden;
-    }
 
-    /* Capa de gradientes moviéndose */
-    .neon-gradient {
-      position: absolute;
-      width: 150%;
-      height: 150%;
-      background: linear-gradient(
-        45deg, 
-        rgba(0, 243, 255, 0.1) 0%, 
-        rgba(255, 0, 200, 0.1) 25%, 
-        rgba(157, 0, 255, 0.1) 50%, 
-        rgba(0, 255, 157, 0.1) 75%, 
-        rgba(0, 243, 255, 0.1) 100%
-      );
-      animation: moveGradient 20s ease-in-out infinite alternate;
-    }
+<div class="parent">
+    <div class="div1">1</div>
+    <div class="div2">2</div>
+    <div class="div3">3</div>
+    <div class="div4">4</div>
+    <div class="div5">5</div>
+    <div class="div6">6</div>
+    <div class="div7">7</div>
+    <div class="div8">8</div>
+    <div class="div9">9</div>
+    <div class="div10">10</div>
+    <div class="div11">11</div>
+    <div class="div12">12</div>
+</div>
+    
+.parent {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 8px;
+}
+    
+.div1 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+}
 
-    /* Luces neón parpadeantes */
-    .neon-lights {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        radial-gradient(circle at 20% 30%, rgba(0,243,255,0.2) 0%, transparent 5%),
-        radial-gradient(circle at 80% 60%, rgba(255,0,200,0.2) 0%, transparent 5%),
-        radial-gradient(circle at 40% 80%, rgba(157,0,255,0.2) 0%, transparent 5%),
-        radial-gradient(circle at 60% 20%, rgba(0,255,157,0.2) 0%, transparent 5%);
-      animation: flickerLights 8s linear infinite;
-    }
+.div2 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+}
 
-    /* Circuitos neón moviéndose */
-    .neon-circuits {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(to right, rgba(0,243,255,0.1) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0,243,255,0.1) 1px, transparent 1px);
-      background-size: 50px 50px;
-      animation: moveCircuits 15s linear infinite alternate;
-    }
+.div3 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 5;
+}
 
-    /* Animaciones del fondo */
-    @keyframes moveGradient {
-      0% { transform: translate(-20%, -20%) rotate(0deg); }
-      100% { transform: translate(0%, 0%) rotate(5deg); }
-    }
+.div4 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-row-start: 3;
+}
 
-    @keyframes flickerLights {
-      0%, 100% { opacity: 0.5; }
-      25% { opacity: 0.8; }
-      50% { opacity: 0.3; }
-      75% { opacity: 1; }
-    }
+.div5 {
+    grid-column-start: 3;
+    grid-row-start: 3;
+}
 
-    @keyframes moveCircuits {
-      0% { transform: translate(0, 0); background-position: 0 0; }
-      100% { transform: translate(-10px, -10px); background-position: 50px 50px; }
-    }
+.div6 {
+    grid-column-start: 4;
+    grid-row-start: 3;
+}
 
-    /* Capa opaca para que las frases se vean bien */
-    .content-overlay {
-      position: relative;
-      z-index: 1;
-      background-color: rgba(5, 5, 23, 0.6);
-      min-height: 100vh;
-    }
+.div7 {
+    grid-column-start: 3;
+    grid-row-start: 4;
+}
 
-    /* Estilos adicionales */
-    .quote-card {
-      transition: all 0.4s ease;
-    }
-    .quote-card:hover {
-      transform: translateY(-5px);
-    }
+.div8 {
+    grid-column-start: 4;
+    grid-row-start: 4;
+}
 
-    .text-shadow-neon-blue { text-shadow: 0 0 5px #00f3ff, 0 0 20px rgba(0,243,255,0.8); }
-    .text-shadow-neon-pink { text-shadow: 0 0 5px #ff00c8, 0 0 20px rgba(255,0,200,0.8); }
-    .text-shadow-neon-purple { text-shadow: 0 0 5px #9d00ff, 0 0 20px rgba(157,0,255,0.8); }
-    .text-shadow-neon-green { text-shadow: 0 0 5px #00ff9d, 0 0 20px rgba(0,255,157,0.8); }
-  </style>
-</head>
+.div9 {
+    grid-row: span 2 / span 2;
+    grid-column-start: 5;
+    grid-row-start: 3;
+}
 
-<body class="bg-dark-950 text-white overflow-x-hidden">
-  <!-- FONDO NEÓN ANIMADO -->
-  <div class="bg-neon-animated">
-    <div class="neon-gradient"></div>
-    <div class="neon-lights"></div>
-    <div class="neon-circuits"></div>
-  </div>
+.div10 {
+    grid-row: span 4 / span 4;
+    grid-column-start: 6;
+    grid-row-start: 3;
+}
 
-  <!-- CAPA CON EL CONTENIDO -->
-  <div class="content-overlay">
-    <!-- Barra de navegación fija -->
-    <header class="sticky top-0 z-50 bg-dark-900/90 backdrop-blur-md border-b border-neon-blue/30 shadow-neon-blue">
-      <div class="container mx-auto px-4 py-3 md:py-4">
-        <div class="flex justify-between items-center">
-          <!-- Título -->
-          <a href="#" class="font-future text-xl md:text-2xl lg:text-3xl font-bold text-neon-blue animate-glowText">
-            FRASES <span class="text-neon-pink">DE LUZ</span>
-          </a>
-          
-          <!-- Menú desktop -->
-          <nav class="hidden lg:flex gap-6 md:gap-8">
-            <a href="#personal" class="font-poetic text-lg hover:text-neon-blue transition-colors">Personal</a>
-            <a href="#amor" class="font-poetic text-lg hover:text-neon-pink transition-colors">Amor</a>
-            <a href="#tristeza" class="font-poetic text-lg hover:text-neon-purple transition-colors">Tristeza</a>
-            <a href="#superacion" class="font-poetic text-lg hover:text-neon-green transition-colors">Superación</a>
-          </nav>
-          
-          <!-- Menú móvil -->
-          <button id="menu-toggle" class="lg:hidden p-2 border border-neon-blue rounded-full shadow-neon-blue hover:bg-neon-blue/10 transition-colors">
-            <svg class="w-5 h-5 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-        </div>
+.div11 {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 5;
+}
+
+.div12 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 1;
+    grid-row-start: 5;
+}
         
-        <!-- Menú móvil desplegable -->
-        <div id="mobile-menu" class="lg:hidden hidden mt-4 pb-3 flex flex-col gap-3">
-          <a href="#personal" class="font-poetic text-lg text-neon-blue py-2 px-4 border-b border-neon-blue/20 hover:bg-dark-800/50 transition-colors">Personal</a>
-          <a href="#amor" class="font-poetic text-lg text-neon-pink py-2 px-4 border-b border-neon-pink/20 hover:bg-dark-800/50 transition-colors">Amor</a>
-          <a href="#tristeza" class="font-poetic text-lg text-neon-purple py-2 px-4 border-b border-neon-purple/20 hover:bg-dark-800/50 transition-colors">Tristeza</a>
-          <a href="#superacion" class="font-poetic text-lg text-neon-green py-2 px-4 hover:bg-dark-800/50 transition-colors">Superación</a>
-        </div>
-      </div>
-    </header>
-
-    <!-- Portada principal -->
-    <section class="min-h-[85vh] flex flex-col justify-center items-center px-4 text-center relative py-16">
-      <h1 class="font-future text-[clamp(2rem,7vw,4.5rem)] font-bold mb-6 leading-tight animate-flicker">
-        <span class="text-neon-blue">REFLEXIONES</span> 
-        <span class="block text-[clamp(1.5rem,5vw,3rem)] mt-2 text-neon-pink">DE UN ALMA</span>
-      </h1>
-      <p class="font-poetic text-[clamp(1rem,3vw,1.5rem)] max-w-3xl text-neon-yellow animate-glowText mb-10">
-        "Cada palabra es una chispa que ilumina el camino del corazón y la mente"
-      </p>
-      <a href="#personal" class="font-poetic text-lg px-6 py-3 border-2 border-neon-blue rounded-full shadow-neon-blue hover:bg-neon-blue/10 transition-all animate-pulseNeon">
-        Explorar Frases
-      </a>
-    </section>
-
-    <!-- Sección: Reflexiones Personales (25 frases) -->
-    <section id="personal" class="py-16 md:py-24 px-4 relative">
-      <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-blue to-neon-pink"></div>
-      
-      <div class="container mx-auto">
-        <h2 class="font-future text-[clamp(1.5rem,4vw,3rem)] font-bold text-center mb-12 text-neon-blue animate-glowText">
-          REFLEXIONES PERSONALES
-        </h2>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          <!-- Frase 1 -->
-          <div class="quote-card bg-dark-800/80 p-6 md:p-8 rounded-lg border border-neon-blue/20 shadow-neon-blue hover:shadow-neon-blue">
-            <p class="font-quote text-lg md:text-xl text
-              
