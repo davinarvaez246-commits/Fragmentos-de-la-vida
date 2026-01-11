@@ -1,209 +1,75 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Página Mejorada</title>
+  <title>Luz de Reflexión</title>
   
-  <!-- Carga eficiente de fuentes -->
+  <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS (optimizado para producción) -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Configuración rápida (para desarrollo) -->
+  <!-- Configuración rápida -->
   <script>
     tailwind.config = {
-      darkMode: 'class',
-      theme: { extend: { colors: { primary: '#2563eb' } } }
+      theme: { extend: { colors: { neon: { blue: '#00f3ff' } } } }
     }
   </script>
   
-  <!-- Estilos personalizados y componentes reutilizables -->
+  <!-- Estilos personalizados neón -->
   <style type="text/tailwindcss">
     @layer utilities {
-      .content-auto { content-visibility: auto; }
-      .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-      .card-hover { @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1; }
-    }
-
-    @layer components {
-      .btn { @apply px-4 py-2 rounded-md font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2; }
-      .btn-primary { @apply btn bg-primary text-white hover:bg-primary/90 focus:ring-primary; }
-      .btn-secondary { @apply btn bg-secondary text-white hover:bg-secondary/90 focus:ring-secondary; }
+      .text-neon-blue { color: #00f3ff; text-shadow: 0 0 5px #00f3ff, 0 0 20px rgba(0, 243, 255, 0.5); }
+      .text-neon-pink { color: #ff00c8; text-shadow: 0 0 5px #ff00c8, 0 0 20px rgba(255, 0, 200, 0.5); }
+      .text-neon-purple { color: #9d00ff; text-shadow: 0 0 5px #9d00ff, 0 0 20px rgba(157, 0, 255, 0.5); }
+      .text-neon-green { color: #00ff9d; text-shadow: 0 0 5px #00ff9d, 0 0 20px rgba(0, 255, 157, 0.5); }
+      .text-neon-yellow { color: #faff00; text-shadow: 0 0 5px #faff00, 0 0 20px rgba(250, 255, 0, 0.5); }
+      
+      .border-neon-blue { border-color: #00f3ff; box-shadow: 0 0 5px #00f3ff, 0 0 20px rgba(0, 243, 255, 0.5); }
+      .border-neon-pink { border-color: #ff00c8; box-shadow: 0 0 5px #ff00c8, 0 0 20px rgba(255, 0, 200, 0.5); }
+      
+      .bg-grid { 
+        background-image: linear-gradient(to right, rgba(0, 243, 255, 0.1) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(0, 243, 255, 0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+      }
     }
   </style>
 </head>
 
-<!-- Modo oscuro activable -->
-<body class="bg-neutral-50 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-50 transition-colors duration-300">
+<!-- Fondo oscuro con rejilla sutil -->
+<body class="bg-dark-950 text-white bg-grid min-h-screen">
 
-  <!-- Barra de navegación responsiva -->
-  <header class="sticky top-0 z-50 bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm shadow-sm">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="#" class="font-display text-xl font-bold text-primary dark:text-primary/90">MiMarca</a>
+  <!-- Navegación neón -->
+  <header class="sticky top-0 z-50 bg-dark-900/80 backdrop-blur-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="#" class="font-future text-2xl font-bold text-neon-blue animate-glowText">
+        LUZ<span class="text-neon-pink">REFLEXIÓN</span>
+      </a>
       
-      <!-- Menú para escritorio -->
-      <nav class="hidden laptop:flex gap-6">
-        <a href="#inicio" class="hover:text-primary transition-colors">Inicio</a>
-        <a href="#proyectos" class="hover:text-primary transition-colors">Proyectos</a>
-        <a href="#sobre-mi" class="hover:text-primary transition-colors">Sobre mí</a>
-        <a href="#contacto" class="btn-primary">Contacto</a>
+      <nav class="hidden tablet:flex gap-8">
+        <a href="#origen" class="font-poetic text-lg hover:text-neon-blue transition-colors">El Origen</a>
+        <a href="#sentimientos" class="font-poetic text-lg hover:text-neon-pink transition-colors">Sentimientos</a>
+        <a href="#pensamientos" class="font-poetic text-lg hover:text-neon-purple transition-colors">Pensamientos</a>
+        <a href="#caminos" class="font-poetic text-lg hover:text-neon-green transition-colors">Caminos</a>
       </nav>
       
-      <!-- Botón modo oscuro -->
-      <button id="toggle-darkmode" class="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-          <path class="hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-        </svg>
-      </button>
-      
-      <!-- Menú móvil -->
-      <button id="toggle-menu" class="laptop:hidden p-2">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <!-- Botón móvil -->
+      <button class="tablet:hidden p-2 border border-neon-blue rounded-full shadow-neon-blue">
+        <svg class="w-5 h-5 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
-    
-    <!-- Menú móvil oculto -->
-    <div id="mobile-menu" class="hidden laptop:hidden bg-white dark:bg-neutral-800 shadow-md">
-      <div class="container mx-auto px-4 py-3 flex flex-col gap-4">
-        <a href="#inicio" class="py-2 hover:text-primary transition-colors">Inicio</a>
-        <a href="#proyectos" class="py-2 hover:text-primary transition-colors">Proyectos</a>
-        <a href="#sobre-mi" class="py-2 hover:text-primary transition-colors">Sobre mí</a>
-        <a href="#contacto" class="btn-primary w-full text-center">Contacto</a>
-      </div>
-    </div>
   </header>
 
-  <!-- Sección Inicio (con animaciones) -->
-  <section id="inicio" class="container mx-auto px-4 py-16 laptop:py-24 flex flex-col items-center text-center">
-    <h1 class="font-display text-[clamp(2rem,5vw,4rem)] font-bold mb-4 text-shadow animate-fadeIn">
-      Hola, soy <span class="text-primary">Tu Nombre</span>
-    </h1>
-    <p class="text-lg laptop:text-xl mb-8 max-w-2xl animate-fadeIn delay-100">
-      Desarrollador web especializado en crear experiencias digitales hermosas, rápidas y accesibles.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 animate-fadeIn delay-200">
-      <a href="#proyectos" class="btn-primary">Ver proyectos</a>
-      <a href="#contacto" class="btn-secondary">Escribirme</a>
-    </div>
-    
-    <!-- Imagen con animación flotante -->
-    <img 
-      src="https://picsum.photos/id/1/600/600" 
-      alt="Foto de perfil" 
-      class="mt-12 w-48 h-48 laptop:w-64 laptop:h-64 rounded-full object-cover shadow-lg animate-float"
-      loading="lazy"
-    >
-  </section>
-
-  <!-- Sección Proyectos (tarjetas responsivas) -->
-  <section id="proyectos" class="bg-neutral-100 dark:bg-neutral-800 py-16 laptop:py-24">
-    <div class="container mx-auto px-4">
-      <h2 class="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-2 text-center">Mis Proyectos</h2>
-      <p class="text-center mb-12 max-w-xl mx-auto">Algunos de los trabajos que he desarrollado con pasión y dedicación.</p>
-      
-      <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-6">
-        <!-- Tarjeta proyecto 1 -->
-        <div class="bg-white dark:bg-neutral-700 rounded-lg shadow-md overflow-hidden card-hover">
-          <img 
-            src="https://picsum.photos/id/20/800/500" 
-            alt="Proyecto 1" 
-            class="w-full h-48 object-cover"
-            loading="lazy"
-          >
-          <div class="p-6">
-            <h3 class="font-semibold text-xl mb-2">Sitio Web E-commerce</h3>
-            <p class="mb-4 text-neutral-600 dark:text-neutral-300">Plataforma de ventas con carrito, pagos y panel de administración.</p>
-            <div class="flex justify-between items-center">
-              <span class="text-sm text-neutral-500 dark:text-neutral-400">React + Tailwind CSS</span>
-              <a href="#" class="text-primary hover:underline">Ver demo</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tarjeta proyecto 2 -->
-        <div class="bg-white dark:bg-neutral-700 rounded-lg shadow-md overflow-hidden card-hover">
-          <img 
-            src="https://picsum.photos/id/180/800/500" 
-            alt="Proyecto 2" 
-            class="w-full h-48 object-cover"
-            loading="lazy"
-          >
-          <div class="p-6">
-            <h3 class="font-semibold text-xl mb-2">Aplicación de Tareas</h3>
-            <p class="mb-4 text-neutral-600 dark:text-neutral-300">Herramienta para organizar tareas con sincronización en la nube.</p>
-            <div class="flex justify-between items-center">
-              <span class="text-sm text-neutral-500 dark:text-neutral-400">Vue.js + Firebase</span>
-              <a href="#" class="text-primary hover:underline">Ver demo</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tarjeta proyecto 3 -->
-        <div class="bg-white dark:bg-neutral-700 rounded-lg shadow-md overflow-hidden card-hover">
-          <img 
-            src="https://picsum.photos/id/96/800/500" 
-            alt="Proyecto 3" 
-            class="w-full h-48 object-cover"
-            loading="lazy"
-          >
-          <div class="p-6">
-            <h3 class="font-semibold text-xl mb-2">Blog Personal</h3>
-            <p class="mb-4 text-neutral-600 dark:text-neutral-300">Plataforma de contenido con sistema de comentarios y categorías.</p>
-            <div class="flex justify-between items-center">
-              <span class="text-sm text-neutral-500 dark:text-neutral-400">Next.js + Markdown</span>
-              <a href="#" class="text-primary hover:underline">Ver demo</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Sobre Mí (accesible y responsiva) -->
-  <section id="sobre-mi" class="py-16 laptop:py-24">
-    <div class="container mx-auto px-4 flex flex-col tablet:flex-row gap-8 items-center">
-      <div class="tablet:w-1/3">
-        <img 
-          src="https://picsum.photos/id/1012/600/800" 
-          alt="Foto sobre mí" 
-          class="w-full rounded-lg shadow-lg"
-          loading="lazy"
-        >
-      </div>
-      <div class="tablet:w-2/3">
-        <h2 class="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">Sobre Mí</h2>
-        <p class="mb-4">
-          Con más de 3 años de experiencia en desarrollo web, me apasiona crear soluciones que combinen diseño atractivo y rendimiento óptimo.
-        </p>
-        <p class="mb-6">
-          Me especializo en tecnologías frontend como HTML, CSS, JavaScript, React y Vue.js, además de herramientas como Tailwind CSS para agilizar el proceso de desarrollo.
-        </p>
-        
-        <!-- Habilidades con iconos -->
-        <h3 class="font-semibold text-xl mb-3">Mis Habilidades</h3>
-        <div class="grid grid-cols-2 tablet:grid-cols-3 gap-3 mb-6">
-          <div class="bg-neutral-100 dark:bg-neutral-800 p-3 rounded-md text-center">HTML</div>
-          <div class="bg-neutral-100 dark:bg-neutral-800 p-3 rounded-md text-center">CSS</div>
-          <div class="bg-neutral-100 dark:bg-neutral-800 p-3 rounded-md text-center">JavaScript</div>
-          <div class="bg-neutral-100 dark:bg-neutral-800 p-3 rounded-md text-center">React</div>
-          <div class="bg-neutral-100 dark:bg-neutral-800 p-3 rounded-md text-center">Vue.js</div>
-          <div class="bg-neutral-100 dark:bg-neutral-800 p-3 rounded-md text-center">Tailwind CSS</div>
-        </div>
-        
-        <a href="#" class="btn-primary">Descargar CV</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Contacto (formulario accesible) -->
-  <section id="contacto" class="bg-primary/5 dark:bg-primary/10 py-16 laptop:py-24">
-    <div class="container mx-auto px-4 max-w-3xl">
-      <h2 class="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-2 text-center">Contactame</h2>
-      
+  <!-- Sección Portada (neón impactante) -->
+  <section class="min-h-[90vh] flex flex-col justify-center items-center px-4 text-center relative overflow-hidden">
+    <!-- Luces flotantes decorativas -->
+    <div class="absolute top-20 left-10 w-20 h-20 rounded-full bg-neon-pink/20 shadow-neon-pink animate-float"></div>
+    <div class="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-neon-blue/20 shadow-neon-blue animate-float delay-1000"></div>
+    <div class="absolute top-40 right-1/4 w-16 h-16 rounded-full bg-neon-green/20 shadow-neon-green animate-float delay-2000"></div>
